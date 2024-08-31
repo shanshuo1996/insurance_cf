@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,17 +30,21 @@
         function updateCountdown() {
             const now = new Date();
             const diff = targetDate - now;
-            const minutes = Math.floor(diff / 1000 / 60);
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
             if (diff <= 0) {
                 document.getElementById('countdown').innerText = '3.0 已下架';
             } else {
-                document.getElementById('countdown').innerText = `距离 9.1 号 3.0 下架还有 ${minutes} 分钟`;
+                document.getElementById('countdown').innerText = 
+                    `距离 9.1 号 3.0 下架还有 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
             }
         }
 
-        // 更新倒计时每分钟
-        setInterval(updateCountdown, 60000);
+        // 每秒钟更新一次倒计时
+        setInterval(updateCountdown, 1000);
         updateCountdown();  // 初始化
     </script>
 </body>
