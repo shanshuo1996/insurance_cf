@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to 3.0 Down</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="countdown"></h1>
+
+    <script>
+        // 设置目标日期和时间
+        const targetDate = new Date('2024-09-01T00:00:00');
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+            const minutes = Math.floor(diff / 1000 / 60);
+
+            if (diff <= 0) {
+                document.getElementById('countdown').innerText = '3.0 已下架';
+            } else {
+                document.getElementById('countdown').innerText = `距离 9.1 号 3.0 下架还有 ${minutes} 分钟`;
+            }
+        }
+
+        // 更新倒计时每分钟
+        setInterval(updateCountdown, 60000);
+        updateCountdown();  // 初始化
+    </script>
+</body>
+</html>
